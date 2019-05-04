@@ -1,0 +1,84 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+
+	"scopeName": "source.katana",
+	"fileTypes": ["k"],
+	"name": "Katana",
+
+	"foldingStartMarker": "^[ \t]*{[ \t]*$",
+	"foldingStopMarker": "^[ \t}[ \t]*$",
+
+	"patterns": [
+		{"include": "#comments"},
+		{"include": "#decls"},
+		{"include": "#stmts"},
+		{"include": "#exprs"},
+		{"include": "#types"}
+	],
+
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.number-sign.katana",
+				"match": "#[^{].*"
+			},{
+				"name": "comment.block.katana",
+				"begin": "#{",
+				"end": "#}",
+				"patterns": [
+					{"include": "#comments"}
+				]
+			}]
+		},
+		"decls": {
+			"patterns": [{
+				"name": "keyword.decl.module.katana",
+				"match": "\\b(module|import)\\b"
+			},{
+				"name": "keyword.decl.katana",
+				"match": "\\b(fn|data|global|type|var)\\b"
+			},{
+				"name": "entity.other.operator.katana",
+				"begin": "(?=\\boperator\\b)",
+				"end": ";",
+				"patterns": [{
+					"name": "keyword.decl.katana",
+					"match": "\\boperator\\b"
+				},{
+					"name": "keyword.other.contextual.katana",
+					"match": "\\b(infix|prefix|postfix|left|right|none)\\b"
+				}]
+			},{
+				"name": "keyword.decl.modifier.katana",
+				"match": "\\b(abi|extern|export|opaque)\\b"
+			}]
+		},
+		"stmts": {
+			"patterns": [{
+				"name": "keyword.control.katana",
+				"match": "\\b(else|goto|if|loop|return|unless|unreachable|until|while)\\b"
+			}]
+		},
+		"exprs": {
+			"patterns": [{
+				"name": "keyword.other.katana",
+				"match": "\\b(alignof|builtin|narrow_cast|offsetof|pointer_cast|sign_cast|sizeof|widen_cast)\\b"
+			},{
+				"name": "constant.language.katana",
+				"match": "\\b(false|null|true|undef)\\b"
+			},{
+				"name": "string.quoted.double.katana",
+				"match": "\"(\\\\\"|[^\"])*\""
+			},{
+				"name": "invalid.unterminated-string.katana",
+				"match": "\"[^\"]*"
+			}]
+		},
+		"types": {
+			"patterns": [{
+				"name": "storage.type.katana",
+				"match": "\\b(bool|byte|const|float32|float64|int|int8|int16|int32|int64|typeof|uint|uint8|uint16|uint32|uint64|void)\\b"
+			}]
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "katana-vscode",
+	"description": "Provides support for the Katana programming language in VSCode",
+	"repository": {"url": "https://github.com/mgrech/katana-vscode"},
+	"license": "Apache-2.0",
+	"version": "1.0.0",
+	"author": {
+		"name": "Markus Grech",
+		"email": "me@mgrech.dev"
+	},
+
+	"displayName": "Katana Language Support",
+	"categories": ["Programming Languages"],
+	"publisher": "mgrech",
+	"preview": true,
+	"engines": {
+		"vscode": "^1.33.1"
+	},
+
+	"contributes": {
+		"languages": [{
+			"id": "katana",
+			"aliases": ["Katana"],
+			"extensions": [".k"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "katana",
+			"scopeName": "source.katana",
+			"path": "./grammar.json"
+		}]
+	},
+}
