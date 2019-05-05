@@ -29,6 +29,10 @@
 			"language": "katana",
 			"scopeName": "source.katana",
 			"path": "./grammar.json"
+		}],
+		"commands": [{
+			"title": "Katana - Quickbuild - Build executable from file",
+			"command": "katana.quickbuild"
 		}]
 	},
 
